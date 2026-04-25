@@ -57,7 +57,7 @@ def getRunFiles(path):
 def updateRunFileOptions(tireSelection):
     global runOptions
     global runSelectionBox
-    runOptions = getRunFiles("./data_files/tires/%s/run"%tireSelection)
+    runOptions = getRunFiles("C:/Users/gabri/OneDrive/Documentos/Pegasus/P03/FSAE-Python-Projects/Tire Software/drive-download-20260212T184525Z-1-001/data_files/tires/%s/run"%tireSelection)
     runSelectionBox['menu'].delete(0, 'end')
     # Add new options
     for option in runOptions:
@@ -78,7 +78,7 @@ def getBlocksNames(blocks):
 def updateBlockOptions(na):
     global blockOptions
     global blockSelectionBox
-    blockGuide = loadData("./data_files/tires/%s/run/blockGuide.csv"%selections["tire"].get())
+    blockGuide = loadData("C:/Users/gabri/OneDrive/Documentos/Pegasus/P03/FSAE-Python-Projects/Tire Software/drive-download-20260212T184525Z-1-001/data_files/tires/%s/run/blockGuide.csv"%selections["tire"].get())
     blocks = blockGuide[
         (blockGuide["FZ"] == it.fzSelectionValues[selections["fz"].get()]) &
         (blockGuide["IA"] == it.inclinationAngleSelectionValues[selections["inclinationAngle"].get()]) &
@@ -137,14 +137,14 @@ def plotData(data, title="graph"):
     return
 
 def plotRunGraph():
-    data = loadRunData("./data_files/tires/%s/run/%s"%(selections["tire"].get(), selections["run"].get()))
+    data = loadRunData("C:/Users/gabri/OneDrive/Documentos/Pegasus/P03/FSAE-Python-Projects/Tire Software/drive-download-20260212T184525Z-1-001/data_files/tires/%s/run/%s"%(selections["tire"].get(), selections["run"].get()))
 
     plotData(data, "Run Elapsed Time Plot")
     
     return
 
 def getBlockData(selections):
-    data = loadData("./data_files/tires/%s/run/master_all.csv"%selections["tire"].get())
+    data = loadData("C:/Users/gabri/OneDrive/Documentos/Pegasus/P03/FSAE-Python-Projects/Tire Software/drive-download-20260212T184525Z-1-001/data_files/tires/%s/run/master_all.csv"%selections["tire"].get())
     index = getBlockIndexFromString(selections["block"].get())
     data = data[data["block_id"] == index]
     return data
@@ -157,14 +157,14 @@ def plotBlockGraph():
     return
 
 def plotMasterGraph():
-    data = loadData("./data_files/tires/%s/run/master_all.csv"%selections["tire"].get())
+    data = loadData("C:/Users/gabri/OneDrive/Documentos/Pegasus/P03/FSAE-Python-Projects/Tire Software/drive-download-20260212T184525Z-1-001/data_files/tires/%s/run/master_all.csv"%selections["tire"].get())
 
     plotData(data, "Master File Elapsed Time Plot")
 
     return
 
 def buildMasterFile():
-    path = "./data_files/tires/%s/run"%selections["tire"].get()
+    path = "C:/Users/gabri/OneDrive/Documentos/Pegasus/P03/FSAE-Python-Projects/Tire Software/drive-download-20260212T184525Z-1-001/data_files/tires/%s/run"%selections["tire"].get()
     mb.buildMaster(path, path+"/master_all.csv", path+"/blockGuide.csv")
     return
 
@@ -230,7 +230,7 @@ def initializeUserInterface(root):
     }
 
     runOptions = []
-    tireOptions = getImmediateSubfolders("./data_files/tires")
+    tireOptions = getImmediateSubfolders("C:/Users/gabri/OneDrive/Documentos/Pegasus/P03/FSAE-Python-Projects/Tire Software/drive-download-20260212T184525Z-1-001/data_files/tires")
     pressureOptions= ["8 (psi)", "10 (psi)", "12 (psi)", "14 (psi)"]
     fzOptions= ["222 (N)", "445 (N)", "667 (N)", "890 (N)", "1112 (N)"]
     inclinationAngleOptions= ["0 (deg)", "2 (deg)", "4 (deg)"]
